@@ -6,6 +6,10 @@ export default defineConfig({
     strictPort: true
   },
   publicDir: 'public',
+  allowedHosts: [
+    'localhost',
+    'ltc-rates.com',
+  ],
   build: {
     outDir: 'dist',
     emptyOutDir: true

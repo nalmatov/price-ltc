@@ -1,0 +1,7 @@
+.dt-ordering-off {
+  display: none;
+}
+
+.dt-ordering-desc img {
+  transform: rotate(180deg);
+}

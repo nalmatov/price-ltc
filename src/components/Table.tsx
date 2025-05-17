@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Pagination from './Pagination';
 import { BASE_API } from '../common/helpers';
+import './style.css';
 
 
 const theader_t = [ '#', 'Exchange', 'Pair', 'Price', '+2% Depth', '-2% Depth', '24h Volume', 'Volume %', 'Last Updated', ] as const;
@@ -22,7 +23,7 @@ const forSortChange = { invert: 'remove', remove: 'off', off: 'invert' } as cons
 const sortAriaLabels = {
   invert: { cls: 'dt-ordering-asc', ariaLabel: 'Activate to invert sorting', },
   remove: { cls: 'dt-ordering-desc', ariaLabel: 'Activate to remove sorting', },
-  off: { cls: '', ariaLabel: 'Activate to sort', },
+  off: { cls: 'dt-ordering-off', ariaLabel: 'Activate to sort', },
 };
 
 const Table = () => {
@@ -80,14 +81,16 @@ const Table = () => {
                   data-dt-column={idx}
                   rowSpan={1}
                   colSpan={1}
-                  className={`dt-type-numeric dt-orderable-asc dt-orderable-desc ${idx === sort ? sortAriaLabels[sortValue].cls : ''}`}
+                  className={`dt-type-numeric dt-orderable-asc dt-orderable-desc`}
                   aria-sort="ascending"
                   aria-label={`#: ${idx === sort ? sortAriaLabels[sortValue].ariaLabel : ''}`}
                   tabIndex={0}
                   onClick={() => handleClickSort(idx)}
                 >
                   <span className="dt-column-title user-select-none" role="button">{th}</span>
-                  <span className="dt-column-order"></span>
+                  <span className={`dt-column-order ${idx === sort ? sortAriaLabels[sortValue].cls : 'dt-ordering-off'}`}>
+                    <img style={{ marginLeft: '5px' }} width={10} src='/assets/up-arrows.png' alt="" />
+                  </span>
                 </th>
               ))
             }

@@ -63,11 +63,15 @@ const Table = () => {
   useEffect(() => {
     fetchSortedCurr(0, 'invert');
   }, []);
+  const style = {
+    display: 'grid',
+    gridTemplateColumns: 'max-content repeat(8, 1fr)',
+  };
   return (
     <>
       <table className="table table-hover align-middle mb-0 dataTable __web-inspector-hide-shortcut__" id="sortTable" style={{ width: '100%' }}>
         <thead>
-          <tr role="row">
+          <tr role="row" style={style}>
             {
               theader.map((th, idx) => (
                 <th
@@ -92,7 +96,7 @@ const Table = () => {
         <tbody>
           {
             currencies?.slice((page-1)*10, page*10).map((curr: currency, idx) => (
-              <tr key={curr.id} onClick={() => window.open(curr.url || '')}>
+              <tr key={curr.id} onClick={() => window.open(curr.url || '')} style={style}>
                 <td scope="row" className="dt-type-numeric sorting_1">{curr.id || idx+1}</td>
                 <td>
                   <div className="wth-icon">

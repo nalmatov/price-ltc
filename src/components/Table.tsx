@@ -63,6 +63,28 @@ const Table = () => {
   useEffect(() => {
     fetchSortedCurr(0, 'invert');
   }, []);
+
+  useEffect(() => {
+    // (async () => {
+    //   const url = 'https://ltc-rates.com/api/api/feedback';
+    //   const body = JSON.stringify({
+    //     name: 'Test',
+    //     email: 'test@test.test',
+    //     describe: 'lorem',
+    //   });
+    //   const headers = {
+    //     method: 'POST',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body,
+    //   };
+    //   const res = await fetch(url, headers);
+    //   const data = await res.json();
+    //   console.log(data);
+    // })()
+  }, []);
   return (
     <>
       <table className="table table-hover align-middle mb-0 dataTable __web-inspector-hide-shortcut__" id="sortTable" style={{ width: '100%' }}>
